@@ -1,8 +1,8 @@
-          ControlWindow                               *ControlWindow* *controlwindow*
+    ControlWindow                               *ControlWindow* *controlwindow*
 
 ===========================================================================
 0. Introduction ~
-                                          *ControlWindow-intro* *controlwindow-intro*
+                                    *ControlWindow-intro* *controlwindow-intro*
 
 Easy to control window geometry. 
 
@@ -14,8 +14,7 @@ Easy to control window geometry.
 
 ===========================================================================
 2. Commands ~
-                                    *ControlWindow-commands* *controlwindow-commands*
-                                                          *ControlWindow*
+                              *ControlWindow-commands* *controlwindow-commands* 
 
 - :ControlWindow                you can give no parame. it will just center
                                 the window what vim is working in.
