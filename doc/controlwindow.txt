@@ -1,0 +1,43 @@
+          ControlWindow                               *ControlWindow* *controlwindow*
+
+===========================================================================
+0. Introduction ~
+                                          *ControlWindow-intro* *controlwindow-intro*
+
+Easy to control window geometry. 
+
+===========================================================================
+1. Required ~
+
+- vim +python
+- xdotool (ubuntu platform can install like 'apt-get install xdotool')
+
+===========================================================================
+2. Commands ~
+                                    *ControlWindow-commands* *controlwindow-commands*
+                                                          *ControlWindow*
+
+- :ControlWindow                you can give no parame. it will just center
+                                the window what vim is working in.
+
+- :ControlWindow [margin]       if you just give one parame, it will count the
+                                window size, then do margin top right down
+                                left base on `margin`
+
+- :ControlWindow [marginLeftRight] [marginTopBottom] 
+                                `marginLeftRight` means the window will margin
+                                `left` and `top` what it is. `marginTopBottom`
+                                means the window will margin `top` and `bottom`
+                                what it is.
+
+===========================================================================
+3. Variables ~
+
+                        g:controlwindow#top#margin
+
+this variable means `Screen Heigh` must be reduced it is value when do command
+action. ubuntu platform, it's very reasonable to reduced the `unity panel` height
+when it count the height.
+
+
+vim:tw=78:ts=2:sts=2:sw=2:ft=help:norl
