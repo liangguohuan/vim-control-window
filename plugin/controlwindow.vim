@@ -6,7 +6,7 @@
 "=============================================================================
 " See documentation in accompanying help file
 
-autocmd! bufwritepost * source ~/.vim/bundle/vim-control-window/plugin/controlwindow.vim
+" autocmd! bufwritepost * source ~/.vim/bundle/vim-control-window/plugin/controlwindow.vim
 
 function! controlwindow#wininfo() abort
 
