@@ -60,31 +60,45 @@ endfunction
 
 function! controlwindow#action(...) abort
     let I = controlwindow#wininfo()
-    let I['SH'] -= g:controlwindow#top#margin
+    let I['SH'] -= g:controlwindow#top#margin*2
     if a:0 == 0
-       let x = (I['SW'] - I['W'])/2
-       let y = (I['SH'] - I['H'])/2
-       let cmdstr = printf('xdotool windowmove --sync "%s" %s %s', I['WID'], x, y)
-       let cmdstr2 = ''
+        let w = I['W']
+        let h = I['H']
+        let x = (I['SW'] - w)/2
+        let y = (I['SH'] - h)/2
     elseif a:0 == 1
-       let w = (I['SW'] - a:1*2)
-       let h = (I['SH'] - a:1*2)
-       let x = a:1
-       let y = a:1
-       let cmdstr = printf('xdotool windowsize --sync "%s" %s %s', I['WID'], w, h)
-       let cmdstr2 = printf('xdotool windowmove --sync "%s" %s %s', I['WID'], x, y)
+        let w = (I['SW'] - a:1*2)
+        let h = (I['SH'] - a:1*2)
+        let x = a:1
+        let y = a:1
+    elseif a:0 == 2
+        let w = (I['SW'] - a:2*2)
+        let h = (I['SH'] - a:1*2)
+        let x = a:2
+        let y = a:1
+    elseif a:0 == 3
+        let w = (I['SW'] - a:2*2)
+        let h = (I['SH'] - a:1 - a:3)
+        let x = a:2
+        let y = a:1
     else
-       let w = (I['SW'] - a:1*2)
-       let h = (I['SH'] - a:2*2)
-       let x = a:1
-       let y = a:2
-       let cmdstr = printf('xdotool windowsize --sync "%s" %s %s', I['WID'], w, h)
-       let cmdstr2 = printf('xdotool windowmove --sync "%s" %s %s', I['WID'], x, y)
+        let w = (I['SW'] - a:2 - a:4)
+        let h = (I['SH'] - a:1 - a:3)
+        let x = a:4
+        let y = a:1
     endif
+    let h += 2
+    let w += 2
+    let y += g:controlwindow#top#margin
+    let cmdstr = printf('xdotool windowsize "%s" %s %s', I['WID'], w, h)
+    let cmdstr2 = printf('xdotool windowmove "%s" %s %s', I['WID'], x, y)
     call system(cmdstr)
     call system(cmdstr2)
+    if &verbose
+        echo printf('sw:%s sh:%s w:%s h:%s x:%s, y:%s', I['SW'], I['SH'], w, h, x, y)
+    endif
 endfunction
 
-let g:controlwindow#top#margin = '26'
+let g:controlwindow#top#margin = '30'
 
-command! -nargs=* ControlWindow execute 'silent! call controlwindow#action(<f-args>)'
+command! -nargs=* ControlWindow execute 'call controlwindow#action(<f-args>)'

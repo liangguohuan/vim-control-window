@@ -1,4 +1,4 @@
-    ControlWindow                               *ControlWindow* *controlwindow*
+ControlWindow                                   *ControlWindow* *controlwindow*
 
 ===========================================================================
 0. Introduction ~
@@ -16,18 +16,15 @@ Easy to control window geometry.
 2. Commands ~
                               *ControlWindow-commands* *controlwindow-commands* 
 
-- :ControlWindow                you can give no parame. it will just center
-                                the window what vim is working in.
 
-- :ControlWindow [margin]       if you just give one parame, it will count the
-                                window size, then do margin top right down
-                                left base on `margin`
+                :ControlWindow [top] [right] [down] [left] 
 
-- :ControlWindow [marginLeftRight] [marginTopBottom] 
-                                `marginLeftRight` means the window will margin
-                                `left` and `top` what it is. `marginTopBottom`
-                                means the window will margin `top` and `bottom`
-                                what it is.
+move the window like css margin style. you can do it like:
+
+- :ControlWindow 30
+- :ControlWindow 20 30
+- :ControlWindow 10 30 20
+- :ControlWindow 20 30 30 20
 
 ===========================================================================
 3. Variables ~
@@ -37,6 +34,11 @@ Easy to control window geometry.
 this variable means `Screen Heigh` must be reduced it is value when do command
 action. ubuntu platform, it's very reasonable to reduced the `unity panel` height
 when it count the height.
+
+===========================================================================
+4. Notice ~
+
+xdotool can not move window topleft absolutely, it will leave 10 pixel.
 
 
 vim:tw=78:ts=2:sts=2:sw=2:ft=help:norl
